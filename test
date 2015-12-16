@@ -5,7 +5,7 @@
 Make database of PHIbase
 __
 
-        /usr/bin/makeblastdb -in PHI_accessions -dbtype 'prot' -out PHI_database
+/usr/bin/makeblastdb -in PHI_accessions -dbtype 'prot' -out PHI_database
 
 
 #################################### G. morbida ####################################
