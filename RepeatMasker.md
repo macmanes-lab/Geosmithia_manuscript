@@ -15,7 +15,8 @@ Fusarium_solani.v2.0.29.dna.genome.fa \
 
 #### Run RepeatMasker for *G. clavigera*
 ```
-RepeatMasker -pa 4 -s -gccalc -nolow -species fungi \ Grosmannia_clavigera_kw1407.GCA_000143105.2.29.dna.genome.fa \
+RepeatMasker -pa 4 -s -gccalc -nolow -species fungi \
+Grosmannia_clavigera_kw1407.GCA_000143105.2.29.dna.genome.fa \
 -dir g.clavigera_repeatmasker
 ```
 
