@@ -4,11 +4,10 @@ nextclip -i g.morbida_mp_R1.fastq -j g.morbida_mp_R2.fastq -o g.morbida_mp_nxtcl
 ```
 #### Concatenate R1 and R2 reads for categories A, B, C
 ```
-cat g.morbida_mp_nxtclip_A_R1.fastq g.morbida_mp_nxtclip_B_R1.fastq \
-g.morbida_mp_nxtclip_C_R1.fastq > g.morbida_ABC_mp_nxtclp_R1.fastq
+cat g.morbida_mp_nxtclip_A_R1.fastq g.morbida_mp_nxtclip_B_R1.fastq g.morbida_mp_nxtclip_C_R1.fastq > \ g.morbida_ABC_mp_nxtclp_R1.fastq
 ```
 ```
-cat g.morbida_mp_nxtclip_A_R2.fastq g.morbida_mp_nxtclip_B_R2.fastq g.morbida_mp_nxtclip_C_R2.fastq > g.morbida_ABC_mp_nxtclp_R2.fastq
+cat g.morbida_mp_nxtclip_A_R2.fastq g.morbida_mp_nxtclip_B_R2.fastq g.morbida_mp_nxtclip_C_R2.fastq > \ g.morbida_ABC_mp_nxtclp_R2.fastq
 ```
 #### Error corrected PE reads using BLESS V:0.16 ####
 ```
