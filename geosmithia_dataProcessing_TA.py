@@ -1,10 +1,10 @@
 #!/usr/bin/python3
-# A program for trimming, error correcting and assembling a fungal genome
-# USAGE: ./geosmithia_dataProcessing_TA.py
+# A program for trimming and error correcting raw MP and PE reads 
+# USAGE: ./geosmithia_dataProcessing_TA.py 
 # Author: Taruna Aggarwal
 # Affiliation: University of New Hampshire, Durham, NH, USA
 # Date: 11/10/2015
-# Purpose is to trim, error correct and assemble a fungal genome
+# Purpose is to trim and error correct raw reads (MP and PE)
 
 
 import sys
