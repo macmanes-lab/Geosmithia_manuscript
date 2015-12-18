@@ -1,7 +1,7 @@
 ### SignalP (v4.1)
 
 #### Running signalp for a short report - *G. morbida* 
-###### (Please use the protein file containing fixed headers for G. morbida)
+###### (Please use the protein file containing fixed headers for *G. morbida*)
 ```
 signalp -f short -t euk g.morbida.proteins.fixed.headers.fasta > \
 g.morbida.signalP
