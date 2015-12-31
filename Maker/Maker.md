@@ -78,10 +78,10 @@ cd ../
 mkdir snap_2
 cd snap_2
 maker2zff ~/g.morbida.scaffolds.maker.output/g.morbida.scaffolds.all.gff
-/opt/snap/fathom -categorize 1000 genome.ann genome.dna
-/opt/snap/fathom -export 1000 -plus uni.ann uni.dna
-/opt/snap/forge export.ann export.dna
-/opt/snap/hmm-assembler.pl g.morbida.scaffolds . > ../g.morbida_2.hmm
+/snap/fathom -categorize 1000 genome.ann genome.dna
+/snap/fathom -export 1000 -plus uni.ann uni.dna
+/snap/forge export.ann export.dna
+/snap/hmm-assembler.pl g.morbida.scaffolds . > ../g.morbida_2.hmm
 cd ../
 ```
 #### F. Copy the ```maker_opts.ctl``` to a different file and move ```g.morbida.scaffolds.maker.output``` to a different directory
