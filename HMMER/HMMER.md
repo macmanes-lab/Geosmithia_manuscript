@@ -9,7 +9,7 @@ hmmpress Pfam-A.hmm
 #### hmmscan for *G. morbida* 
 ```
 hmmscan \
---domtblout gm5_new.pfam \
+--domtblout g.morbida.pfam \
 --cpu 8 Pfam-A.hmm g.morbida.proteins.fasta
 ```
 
