@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-#
+# Toni Westbrook (anthonyw@wildcats.unh.edu)
 # Fixup headers in FASTA for CEGMA run
 
 import os

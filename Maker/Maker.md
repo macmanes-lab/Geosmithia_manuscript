@@ -1,28 +1,39 @@
 ### Maker (version 2.31.8)
 #### Required files:
 1. Assembly file called ```g.morbida.scaffolds.fasta```.
-2. ***Fusarium solani*** (version v2.0.26) cdna and proteins files.
-3. CEGMA generated ```gff``` output. This file is provided in the github repo. 
-4. SNAP trained ```hmm``` output.   
+2. ```makerPrep.py```. This script is provided in the github repo.
+3. ***Fusarium solani*** (version v2.0.26) cdna and proteins files.
+4. CEGMA generated ```gff``` output. This file is provided in the github repo. 
+5. SNAP trained ```hmm``` output.   
 
-#### A. Train SNAP with CEGMA generated ```gff``` output
+#### A. Fix headers if final assembly is produced with ALLPaths-LG.
+```
+python3 makerPrep.py --fasta g.morbida.scaffolds.fasta \
+--output g.morbida.scaffolds.fixed.fasta
+```
+```
+mv g.morbida.scaffolds.fasta old.g.morbida.scaffolds.fasta
+mv g.morbida.scaffolds.fixed.fasta g.morbida.scaffolds.fasta
+```
+
+#### B. Train SNAP with CEGMA generated ```gff``` output
 
 ```
 mkdir snap_1
 cd snap_1
-/maker/bin/cegma2zff g.morbida.output.cegma.gff g.morbida.scaffolds.fasta
+/maker/bin/cegma2zff -n g.morbida.output.cegma.gff g.morbida.scaffolds.fasta
 /snap/fathom -categorize 1000 genome.ann genome.dna
 /snap/fathom -export 1000 -plus uni.ann uni.dna
 /snap/forge export.ann export.dna
 /snap/hmm-assembler.pl g.morbida . > ../g.morbida_1.hmm
 cd ..
 ```
-#### B. Generate control files
+#### C. Generate control files
 ```
 maker -CTL
 ```
 
-#### C. Prepare ```maker_opts.ctl``` by changing the following lines in the file
+#### D. Prepare ```maker_opts.ctl``` by changing the following lines in the file
 
 ```
 #-----Genome (these are always required)
@@ -65,12 +76,12 @@ min_contig=10000 #skip genome contigs below this length (under 10kb are often us
 .
 ```
 
-#### D. First Maker run (run1) in the same directory as the control files
+#### E. First Maker run (run1) in the same directory as the control files
 ```
 maker
 ```
 
-#### E. Train SNAP using Maker generated ```gff``` output 
+#### F. Train SNAP using Maker generated ```gff``` output 
 ```
 maker/bin/fasta_merge -d g.morbida.scaffolds.maker.output/g.morbida.scaffolds_master_datastore_index.log
 maker/bin/gff3_merge -d g.morbida.scaffolds.maker.output/g.morbida.scaffolds_master_datastore_index.log
@@ -84,12 +95,12 @@ maker2zff ~/g.morbida.scaffolds.maker.output/g.morbida.scaffolds.all.gff
 /snap/hmm-assembler.pl g.morbida.scaffolds . > ../g.morbida_2.hmm
 cd ../
 ```
-#### F. Copy the ```maker_opts.ctl``` to a different file and move ```g.morbida.scaffolds.maker.output``` to a different directory
+#### G. Copy the ```maker_opts.ctl``` to a different file and move ```g.morbida.scaffolds.maker.output``` to a different directory
 ```
 scp maker_opts.ctl run1_maker_opts.ctl
 mv g.morbida.scaffolds.maker.output run1_g.morbida.scaffolds.maker.output
 ```
-#### G. Prepare ```maker_opts.ctl``` again by changing the following lines in the file. Note only one line is edited this time. 
+#### H. Prepare ```maker_opts.ctl``` again by changing the following lines in the file. Note only one line is edited this time. 
 
 ```
 .
@@ -113,13 +124,13 @@ unmask=0 #also run ab-initio prediction programs on unmasked sequence, 1 = yes, 
 ```
 
 
-#### H. Run Maker (run2) in the same directory as the control files
+#### I. Run Maker (run2) in the same directory as the control files
 ```
 maker
 ```
-#### I. Repeat E-H for a third Maker run and merge all the fastas and gffs one last time.
+#### J. Repeat F-I for a third Maker run and merge all the fastas and gffs one last time.
 
-#### J. Convert structural fastas and gffs into functional files using a database of choice.
+#### K. Convert structural fastas and gffs into functional files using a database of choice.
 
 ```
 /maker/bin/maker_functional_fasta uniprot.sprot.fasta output.txt g.morbida.scaffolds.all.maker.transcripts.fasta > g.morbida.transcripts.fasta
